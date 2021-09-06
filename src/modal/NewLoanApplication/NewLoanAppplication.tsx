@@ -1,11 +1,13 @@
-import React from 'react';
-import { View, Modal } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Modal, Platform, Text, Button, SafeAreaView } from 'react-native';
 import styles from './style';
 import globalStyles from '../../styles';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { WHITE } from '../../constants';
-import { Headline, Paragraph, Title } from 'react-native-paper';
+import { Caption, Headline, Paragraph, Title, Button as PaperButton } from 'react-native-paper';
 import TextInput from '../../components/TextInput';
+import { Dropdown } from 'react-native-material-dropdown';
+import ContainedButton from '../../components/ContainedButton';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 interface INewLoanApplicationProps {
  isVisible: boolean,
@@ -13,12 +15,47 @@ interface INewLoanApplicationProps {
  onRequestClose: any
 }
 
+const data = [{
+    value: 'Banana',
+  }, {
+    value: 'Mango',
+  }, {
+    value: 'Pear',
+  }];
+
+
+
 
 export default function NewLoanApplication({ isVisible, onClose, onRequestClose } : INewLoanApplicationProps) {
+    const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
+
+    
     return (
-        <Modal visible={isVisible} animationType='slide' animated onClose={onClose} onRequestClose={onRequestClose}>
+        <Modal visible={false} animationType='slide' animated onClose={onClose} onRequestClose={onRequestClose}>
             <SafeAreaView style={[globalStyles.fullScreen, globalStyles.paddedView, { backgroundColor: WHITE }]}>
-                <View>
+            <ScrollView contentContainerStyle={globalStyles.paddedView}>
+                <View style={{marginVertical: 20}}>
                 <Headline style={{color: 'black'}}>
                     Complete a new auto loan application
                 </Headline>
@@ -27,7 +64,7 @@ export default function NewLoanApplication({ isVisible, onClose, onRequestClose 
                 </Paragraph>
                 </View>
 
-                <View>
+            
                     <TextInput 
                     id='firstName'
                     mode='outlined'
@@ -67,7 +104,43 @@ export default function NewLoanApplication({ isVisible, onClose, onRequestClose 
                     required
                     onInputChange={() => {}}
                      />
-                </View>
+
+<View style={{marginVertical: 20}}>
+        <Caption style={{color: '#999999'}}>
+            Select your date of birth
+        </Caption>
+      </View>
+
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display='calendar'
+          onChange={onChange}
+        />
+      )
+      }
+
+<Dropdown
+        label='Select your annual income'
+        data={data}
+      />
+
+      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+      <PaperButton mode='text' onPress={onClose}>
+                Cancel
+                </PaperButton>
+
+      <ContainedButton onPress={() => {}}>
+                    Submit Application
+                </ContainedButton>
+
+    </View>
+
+
+                </ScrollView>
             </SafeAreaView>
         </Modal>
     )

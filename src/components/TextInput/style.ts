@@ -5,18 +5,20 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     label: {
-        fontFamily: 'open-sans-bold',
-        marginVertical: 8
+        marginVertical: 5,
+        fontSize: 12,
+        color: '#999'
       },
       input: {
         paddingHorizontal: 2,
         paddingVertical: 5,
+        color: 'black',
+        fontSize: 14
       },
       errorContainer: {
         marginVertical: 5
       },
       errorText: {
-        fontFamily: 'open-sans',
         color: 'red',
         fontSize: 13
       }

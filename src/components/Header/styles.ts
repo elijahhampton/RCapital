@@ -3,6 +3,7 @@ import { BACKGROUND_COLOR, WHITE } from "../../constants";
 
 const styles = StyleSheet.create({
     header: {
+        paddingHorizontal: 20,
         alignSelf: 'center',
         flexDirection: 'row',
         alignContent: 'center',
@@ -10,7 +11,6 @@ const styles = StyleSheet.create({
         backgroundColor: BACKGROUND_COLOR,
         color: WHITE,
         width: Dimensions.get('window').width,
-        paddingHorizontal: 20,
     },
     headerLabel: {
         color: '#999999'

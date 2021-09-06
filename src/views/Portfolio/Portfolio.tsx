@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
 import globalStyles from '../../styles';
 import { Caption, Card, Headline, Subheading, Title } from 'react-native-paper';
-import { SECONDARY_COLOR, WHITE } from '../../constants';
+import { BACKGROUND_COLOR, SECONDARY_COLOR, WHITE } from '../../constants';
 import { ScrollView } from 'react-native-gesture-handler';
 import ValueAccentText from '../../components/ValueAccentText';
 import { Chart, Line, Area, HorizontalAxis, VerticalAxis } from 'react-native-responsive-linechart'
@@ -13,11 +13,11 @@ import moment from 'moment';
 
 export default function Portfolio() : ReactNode {
     return (
-        <View style={[globalStyles.fullScreen, globalStyles.paddedView]}>
+        <View style={[globalStyles.fullScreen]}>
            <Header title='Portfolio' headerLabel={moment(new Date()).format('LL').toString()} />
             <ScrollView>
 
-<Card style={[styles.portfolioCard, globalStyles.displayCard, { padding: 0}]}>
+<Card style={[styles.portfolioCard, globalStyles.paddedView, globalStyles.displayCard, { padding: 0}]}>
     <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={[SECONDARY_COLOR, '#A3D8BC']} style={styles.linearGradient}>
         <View style={styles.portfolioCardLeft}>
             <Caption>
@@ -43,14 +43,16 @@ export default function Portfolio() : ReactNode {
 </Card>
 
 <View style={styles.visualizeContainer}>
+    <View style={globalStyles.paddedView}>
     <Title>
         Visualize
     </Title>
+    </View>
 
-    <Card style={[styles.algorandGraphCard, globalStyles.displayCard, { height: 200}]}>
+    <View style={[{backgroundColor: 'transparent',  alignItems: 'center', justifyContent: 'center', marginVertical: 20, height: 300, elevation: 0}]}>
     <Chart
     
-  style={{ height: 200, width: Dimensions.get('window').width - 40 }}
+  style={{ height: 250, width: Dimensions.get('window').width }}
   data={[
     { x: -2, y: 15 },
     { x: -1, y: 10 },
@@ -71,7 +73,7 @@ export default function Portfolio() : ReactNode {
   yDomain={{ min: 0, max: 20 }}
 >
   
-  <Area theme={{ gradient: { from: { color: '#fff' }, to: { color: '#fff', opacity: 0 } }}} />
+  <Area theme={{ gradient: { from: { color: BACKGROUND_COLOR }, to: { color: BACKGROUND_COLOR, opacity: 0 } }}} />
   <Line theme={{ stroke: { color: SECONDARY_COLOR, width: 2 }, scatter: { default: { width: 4, height: 4, rx: 2 }} }} />
 </Chart>
 
@@ -95,13 +97,13 @@ export default function Portfolio() : ReactNode {
             <Text style={styles.algorandPercentageChangeText}>
                 +2.5%
             </Text>
-            <ValueAccentText size='small' color='black'>
+            <ValueAccentText size='small' color='white'>
                 $1.06
             </ValueAccentText>
         </View>
 
 </View>
-    </Card>
+    </View>
 </View>
 </ScrollView>
         </View>

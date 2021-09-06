@@ -102,6 +102,7 @@ export default function TextInput({
              <View style={styles.formControl}>
       <Text style={styles.label}>{label}</Text>
       <Input
+      theme={{colors: { text: 'black'}}}
       label={label}
       id={id}
         mode={mode}

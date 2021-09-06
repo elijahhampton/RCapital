@@ -28,19 +28,20 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     visualizeContainer: {
-        marginVertical: 50,
+        marginVertical: 80,
     },
     algorandGraphCard: {
-        width: '100%',
+        width: Dimensions.get('window').width,
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: BACKGROUND_COLOR,
     },
     algorandTitleText: {
         fontSize: 14,
         padding: 0,
          margin: 0,
-         color: 'black',
+         color: WHITE,
          fontWeight: 'bold',
          paddingVertical: 4
     },
@@ -61,7 +62,8 @@ const styles = StyleSheet.create({
     visualizeTickerContainer: {
         flexDirection: 'column', 
         justifyContent: 'center', 
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        paddingHorizontal: 10,
     },
     visualizeOverview: {
         position: 'absolute', 
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         justifyContent: 'space-between', 
         alignItems: 'center',
-        paddingHorizontal: 10
+        paddingHorizontal: 20
     },
     algorandLogoContainer: {
         borderRadius: 1000, 
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
         height: 40, 
         alignItems: 'center', 
         justifyContent: 'center',
-        marginHorizontal: 10
+
     },
     visualizeOverviewData: {
         flexDirection: 'row', 
