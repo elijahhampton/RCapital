@@ -10,11 +10,14 @@ import ContainedButton from '../../components/ContainedButton';
 import PoolCard from '../../components/PoolCard';
 import ValueAccentText from '../../components/ValueAccentText';
 import OutlinedButton from '../../components/OutlinedButton';
+import Header from '../../components/Header';
 
 export default function Invest() : ReactNode {
     return (
-        <SafeAreaView style={styles.root}>
+        <View style={styles.root}>
+            <Header title='Invest' />
             <View style={[globalStyles.paddedView, styles.accountBalanceView]}>
+                
             <Subheading>
                 Account Balance
             </Subheading>
@@ -76,6 +79,6 @@ export default function Invest() : ReactNode {
             </View>
 
             
-        </SafeAreaView>
+        </View>
     )
 }

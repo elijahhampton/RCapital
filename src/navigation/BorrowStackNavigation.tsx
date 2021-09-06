@@ -13,18 +13,7 @@ export default function BorrowStack() : ReactNode {
     <BorrowStackNavigator.Navigator
       initialRouteName='Borrow'
       screenOptions={{
-        headerShown: true,
-        header: ({ navigation, route, options, back }) => {
-          const title = getHeaderTitle(options, route.name);
-        
-          return (
-            <Header title={title} />
-          )
-        },
-        headerStyle: {
-          height: 80,
-          minHeight: 80
-        }
+        headerShown: false,
       }}
     >
         <BorrowStackNavigator.Screen name='Borrow' component={Borrow} />

@@ -12,18 +12,7 @@ export default function InvestStack() : ReactNode {
     <InvestStackNavigator.Navigator
       initialRouteName='Invest'
       screenOptions={{
-        headerShown: true,
-        header: ({ navigation, route, options, back }) => {
-          const title = getHeaderTitle(options, route.name);
-        
-          return (
-            <Header title={title} />
-          )
-        },
-        headerStyle: {
-          height: 80,
-          minHeight: 80
-        }
+        headerShown: false,
       }}
     >
         <InvestStackNavigator.Screen name='Invest' component={Invest} />

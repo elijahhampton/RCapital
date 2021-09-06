@@ -1,24 +1,34 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { Headline } from 'react-native-paper';
+import { SafeAreaView, View, Text } from 'react-native';
+import { Headline, Subheading } from 'react-native-paper';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import styles from './styles';
 
+
+import moment from 'moment';
+
 interface IProps {
-    title: string
+    title: string,
+    headerLabel?: string
 }
 
-export default function Header({ title } : IProps) {
+export default function Header({ title, headerLabel } : IProps) {
     return (
-       <View style={styles.header}>
+       <SafeAreaView style={[styles.header]}>
+           <View>
+           <Subheading style={styles.headerLabel}>
+               {headerLabel}
+               </Subheading>
             <Headline>
                 {title}
             </Headline>
+           </View>
+
 
            <View>
                
            </View>
-       </View>
+       </SafeAreaView>
     )
 }

@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet, ViewStyle } from "react-native";
+import { BACKGROUND_COLOR } from "./constants";
 
 const { width, height } = Dimensions.get('window');
 
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
         padding: 10
     },
     fullScreen: {
-        width,
-        height,
+        flex: 1,
+        backgroundColor: BACKGROUND_COLOR
     },
     paddedView: {
         paddingHorizontal: 20

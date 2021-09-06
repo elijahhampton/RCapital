@@ -20,7 +20,10 @@ const styles = StyleSheet.create({
         color: SECONDARY_COLOR
     },
     chip: {
-        height: 'auto'
+       height: 30,
+    },
+    chipTextStyle: {
+        color: 'black'
     }
 })
 

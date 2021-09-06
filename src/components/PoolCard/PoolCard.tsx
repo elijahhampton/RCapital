@@ -28,7 +28,7 @@ export default function PoolCard({poolName, numLoans, percentFinanced, percentAp
                 </Text>
             </View>
 
-            <Chip style={styles.chip}>{percentApr}% APR</Chip>
+            <Chip textStyle={styles.chipTextStyle} style={styles.chip}>{percentApr}% APR</Chip>
         </View>
 
         <ContainedButton onPress={() => {}}>

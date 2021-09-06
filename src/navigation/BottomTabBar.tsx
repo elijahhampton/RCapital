@@ -6,6 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import InvestStack from './InvestStackNavigation';
 import PortfolioStack from './PortfolioStackNavigation';
 import BorrowStack from './BorrowStackNavigation';
+import { BACKGROUND_COLOR } from '../constants';
 
 const BottomTabBarNavigator = createBottomTabNavigator();
 
@@ -14,6 +15,10 @@ export default function BottomTabBar() {
         <BottomTabBarNavigator.Navigator 
             initialRouteName='InvestStack'
             screenOptions={({ route }) => ({
+              tabBarStyle: {
+                backgroundColor: BACKGROUND_COLOR
+              },
+              
             tabBarShowLabel: false,
             headerShown: false,
             tabBarIcon: ({ focused, color, size }) => {
@@ -30,8 +35,8 @@ export default function BottomTabBar() {
               // You can return any component that you like here!
               return <MaterialIcons name={iconName} size={size} color={color} />;
             },
-            tabBarActiveTintColor: 'black',
-            tabBarInactiveTintColor: 'gray',
+            tabBarActiveTintColor: '#fff',
+            tabBarInactiveTintColor: '#999',
           })}
           >
                         <BottomTabBarNavigator.Screen name='PortfolioStack' component={PortfolioStack} />

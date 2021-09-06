@@ -6,6 +6,8 @@ import { getHeaderTitle } from '@react-navigation/elements';
 import Header from '../components/Header';
 import Portfolio from '../views/Portfolio';
 
+import moment from 'moment';
+
 const PortfolioStackNavigator = createStackNavigator();
 
 export default function PortfolioStack() : ReactNode {
@@ -13,18 +15,7 @@ export default function PortfolioStack() : ReactNode {
     <PortfolioStackNavigator.Navigator
       initialRouteName='Portfolio'
       screenOptions={{
-        headerShown: true,
-        header: ({ navigation, route, options, back }) => {
-          const title = getHeaderTitle(options, route.name);
-        
-          return (
-            <Header title={title} />
-          )
-        },
-        headerStyle: {
-          height: 80,
-          minHeight: 80
-        }
+        headerShown: false
       }}
     >
         <PortfolioStackNavigator.Screen name='Portfolio' component={Portfolio} />
