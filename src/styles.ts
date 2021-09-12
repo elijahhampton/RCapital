@@ -19,7 +19,18 @@ const styles = StyleSheet.create({
     },
     paddedView: {
         paddingHorizontal: 20
+    },
+    center: {
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
 
+const appbarTheme = {
+    colors: {
+        primary: BACKGROUND_COLOR
+    }
+}
+
+export { appbarTheme }
 export default styles;

@@ -3,18 +3,24 @@ import { BACKGROUND_COLOR, WHITE } from "../../constants";
 
 const styles = StyleSheet.create({
     header: {
-        paddingHorizontal: 20,
-        alignSelf: 'center',
         flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'space-between',
         backgroundColor: BACKGROUND_COLOR,
         color: WHITE,
-        width: Dimensions.get('window').width,
+        width: '100%',
+        paddingHorizontal: 20,
     },
     headerLabel: {
         color: '#999999'
-    }
+    },
+    absolute: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      }
 })
 
 export default styles;

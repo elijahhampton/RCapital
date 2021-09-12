@@ -1,111 +1,128 @@
-import React, { ReactNode } from 'react';
-import { Dimensions, SafeAreaView, Text, View, Image } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import styles from './styles';
+import React, { ReactNode, useState } from 'react';
+import { Dimensions, SafeAreaView, View, Image } from 'react-native';
+import { Button, Title, Text, Headline, TextInput, Provider, Menu } from 'react-native-paper';
 import globalStyles from '../../styles';
-import { Caption, Card, Headline, Subheading, Title } from 'react-native-paper';
-import { BACKGROUND_COLOR, SECONDARY_COLOR, WHITE } from '../../constants';
-import { ScrollView } from 'react-native-gesture-handler';
-import ValueAccentText from '../../components/ValueAccentText';
-import { Chart, Line, Area, HorizontalAxis, VerticalAxis } from 'react-native-responsive-linechart'
-import Header from '../../components/Header';
-import moment from 'moment';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import { useNavigation } from '@react-navigation/core';
+import TextDialog from '../../components/TextDialog/TextDialog';
+import { SECONDARY_COLOR } from '../../constants';
 
-export default function Portfolio() : ReactNode {
+export default function Portfolio({ navigation }) : ReactNode {
+    const [stakeDialogIsVisible, setStakeDialogIsVisible] = useState(false);
+
+    const onDismissStakeDialog = () => {
+        setStakeDialogIsVisible(false);
+    }
+
+    const onCancelSetStakeDialog = () => {
+        onDismissStakeDialog();
+    }
+
+    const onAcceptStakeDialog = () => {
+        onDismissStakeDialog();
+    }
+
+    const onCalculateDailyReward = () => {
+        setStakeDialogIsVisible(true)
+    }
+
+    const onSellStake = () => {
+        navigation.navigate('SellStake')
+    }
+
     return (
-        <View style={[globalStyles.fullScreen]}>
-           <Header title='Portfolio' headerLabel={moment(new Date()).format('LL').toString()} />
-            <ScrollView>
+        <SafeAreaView style={[globalStyles.fullScreen]}>
+                <View style={[{marginVertical: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}, globalStyles.paddedView,]}>
+                    <MaterialIcon name='menu' size={22} color='white' onPress={() => navigation.openDrawer()} />
 
-<Card style={[styles.portfolioCard, globalStyles.paddedView, globalStyles.displayCard, { padding: 0}]}>
-    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={[SECONDARY_COLOR, '#A3D8BC']} style={styles.linearGradient}>
-        <View style={styles.portfolioCardLeft}>
-            <Caption>
-                STAKED FUNDS
-            </Caption>
-            <ValueAccentText size='large' color='#FFF'>
-                50.2384 ALGO
-            </ValueAccentText>
-        </View>
+                    <MaterialIcon name='notifications' size={22} color='white' onPress={() => navigation.navigate('Notifications')} />
+                </View>
+                <View style={{marginVertical: 15, width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                    <View style={{flexDirection: 'column', alignItems: 'center'}}>
+                        
+                        <Title>
+                            Portfolio Balance
+                        </Title>
+                        <Text style={{color: SECONDARY_COLOR}}>
+                            $371.88
+                        </Text>
+                    </View>
 
-        <View style={styles.portfolioCardRight}>
-            <Caption>
-                Profit
-            </Caption>
-            <Caption style={{color: 'black'}}>
-                +2.3%
-            </Caption>
-            <Caption style={{color: 'black'}}>
-            2.34 RCAP
-            </Caption>
-        </View>
-    </LinearGradient>
-</Card>
+                    <View style={{flexDirection: 'column', alignItems: 'flex-start'}}>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Image source={require('../../assets/images/algorand_logo.png')} style={{width: 40, height: 40}} />
+                            <Text>
+                                178.29/298
+                            </Text>
+                        </View>
 
-<View style={styles.visualizeContainer}>
-    <View style={globalStyles.paddedView}>
-    <Title>
-        Visualize
-    </Title>
-    </View>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Image source={require('../../assets/images/algorand_logo.png')} style={{width: 40, height: 40}} />
+                            <Text>
+                                1420
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+                
+                <View style={[{ flex: 1, justifyContent: 'center', alignItems: 'center'}, globalStyles.paddedView]}>
+                    <View style={{flex: 1, justifyContent: 'space-evenly'}}>
+                        <View style={{width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                            <View style={{flex: 1, alignItems: 'flex-start', justifyContent: 'center'}}>
+                            <Headline>
+                                Propose stake
+                            </Headline>
+                            </View>
 
-    <View style={[{backgroundColor: 'transparent',  alignItems: 'center', justifyContent: 'center', marginVertical: 20, height: 300, elevation: 0}]}>
-    <Chart
-    
-  style={{ height: 250, width: Dimensions.get('window').width }}
-  data={[
-    { x: -2, y: 15 },
-    { x: -1, y: 10 },
-    { x: 0, y: 12 },
-    { x: 1, y: 7 },
-    { x: 2, y: 6 },
-    { x: 3, y: 8 },
-    { x: 4, y: 10 },
-    { x: 5, y: 8 },
-    { x: 6, y: 12 },
-    { x: 7, y: 14 },
-    { x: 8, y: 12 },
-    { x: 9, y: 13.5 },
-    { x: 10, y: 18 },
-  ]}
-  padding={{  }}
-  xDomain={{ min: -2, max: 10 }}
-  yDomain={{ min: 0, max: 20 }}
->
-  
-  <Area theme={{ gradient: { from: { color: BACKGROUND_COLOR }, to: { color: BACKGROUND_COLOR, opacity: 0 } }}} />
-  <Line theme={{ stroke: { color: SECONDARY_COLOR, width: 2 }, scatter: { default: { width: 4, height: 4, rx: 2 }} }} />
-</Chart>
+                            <View style={{flex: 1, alignItems: 'center', flexDirection: 'row', justifyContent: 'center'}}>
+                            <Image source={require('../../assets/images/algorand_logo.png')} style={{width: 60, height: 60}} />
+                            <TextInput placeholderTextColor='white' placeholder='110' style={{color: 'white', width: 50,  backgroundColor: 'transparent'}} />
+                            </View>
+     
+                        </View>
 
-<View style={styles.visualizeOverview}>
-    <View style={styles.visualizeOverviewData}>
-        <Card style={styles.algorandLogoContainer}>
-            <Image style={{width: 40, height: 40}} source={require('../../assets/images/algorand_logo.png')} />
-        </Card>
-        <View style={styles.visualizeTickerContainer}>
-        <Text style={styles.algorandTitleText}>
-            Algorand
-        </Text>
-        <Text style={styles.algorandTickerText}>
-            ALGO
-        </Text>
-        </View>
-        
-    </View>
+                        <View style={{width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                        <View style={{flex: 1, alignItems: 'flex-start', justifyContent: 'center'}}>
+                            <Headline>
+                                Pool term
+                            </Headline>
+                            </View>
 
-    <View style={styles.visualizeOverviewText}>
-            <Text style={styles.algorandPercentageChangeText}>
-                +2.5%
-            </Text>
-            <ValueAccentText size='small' color='white'>
-                $1.06
-            </ValueAccentText>
-        </View>
+                            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                            <TextInput placeholderTextColor='white' placeholder='84mo' style={{color: 'white', width: 70,  backgroundColor: 'transparent'}} />
+                            </View>
+                            </View>
 
-</View>
-    </View>
-</View>
-</ScrollView>
-        </View>
+                        <View style={{width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                        <View style={{flex: 1, alignItems: 'flex-start', justifyContent: 'center'}}>
+                            <Headline>
+                               Reward tier
+                            </Headline>
+                            </View>
+
+                            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                            <TextInput placeholderTextColor='white' placeholder='5x' style={{color: 'white', width: 50,  backgroundColor: 'transparent'}} />
+                            </View>
+                        </View>
+
+                        <Button mode='contained' onPress={onCalculateDailyReward}>
+                        Calculate Daily Reward
+                    </Button>
+
+                    <Button mode='outlined' labelStyle={{color: '#999'}} onPress={onSellStake}>
+                        Sell Stake
+                    </Button>
+                    </View>
+                </View>
+
+                <TextDialog 
+                    isVisible={stakeDialogIsVisible}
+                    content='Your daily reward will be 10 ALGO if you stake 100 ALGO.  Would you like to proceed?'
+                    acceptTitle='Stake'
+                    onAccept={onAcceptStakeDialog}
+                    onCancel={onCancelSetStakeDialog}
+                    onDismiss={onDismissStakeDialog}
+                />
+        </SafeAreaView>
     )
 }

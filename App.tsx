@@ -21,14 +21,17 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import BottomTabBar from './src/navigation/BottomTabBar';
 import store from './src/redux/store';
 import theme from './src/theme';
+import PoolOverview from './src/views/PoolOverview/PoolOverview';
+import DrawerNavigator from './src/navigation/DrawerNavigator';
+import PortfolioStack from './src/navigation/PortfolioStackNavigation';
 
 const App: () => ReactNode = () => {
   return (
     <ReduxProvider store={store}>
       <PaperProvider theme={theme}>
-      <NavigationContainer>
-        <BottomTabBar />
-      </NavigationContainer>
+        <NavigationContainer>
+          <DrawerNavigator />
+        </NavigationContainer>
       </PaperProvider>
     </ReduxProvider>
   );

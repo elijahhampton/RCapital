@@ -7,13 +7,13 @@ const styles = StyleSheet.create({
     },
     linearGradient: {
         position: 'absolute',
-        flex: 1,
-        padding: 10,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
         borderRadius: 8,
         width: '100%',
-        flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent: 'space-between',
+        height: 'auto',
     },
     portfolioCard: {
         width: '100%',
@@ -89,7 +89,70 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'center'
-    }
+    },
+    rewards: {
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-evenly',
+        marginVertical: 20
+    },
+    verticalAlign: {
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    switch: {
+        marginVertical: 5
+    },
+    titles: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        marginVertical: 10,
+    },
+    title: {
+        color: 'white',
+        fontWeight: '600'
+    },
+    rewardAmount: {
+        color: 'white',
+        fontWeight: '400'
+    },
+    rewardOptionContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        width: '100%',
+        marginVertical: 20
+    },
+    textInput: {
+        width: '70%',
+        height: 35,
+        borderRadius: 20,
+        padding: 10,
+        backgroundColor: '#999',
+        borderColor: 'red',
+        alignSelf: 'center',
+    },
+    inputCharacteristic: {
+        color: 'white',
+    },
+    notice: {
+        width: Dimensions.get('window').width,
+        padding: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    absolute: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        backgroundColor: 'green',
+        width: '100%',
+        height: '100%'
+      },
+
 })
 
 export default styles;

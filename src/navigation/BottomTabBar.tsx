@@ -16,9 +16,11 @@ export default function BottomTabBar() {
             initialRouteName='InvestStack'
             screenOptions={({ route }) => ({
               tabBarStyle: {
-                backgroundColor: BACKGROUND_COLOR
+                backgroundColor: BACKGROUND_COLOR,
+                borderWidth: 0,
+                borderTopColor: 'transparent',
               },
-              
+            
             tabBarShowLabel: false,
             headerShown: false,
             tabBarIcon: ({ focused, color, size }) => {

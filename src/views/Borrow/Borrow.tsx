@@ -2,8 +2,8 @@ import React, { ReactNode, useState } from 'react';
 import { SafeAreaView, Text, View, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
-import globalStyles from '../../styles';
-import { Card, Headline, Subheading, Title, Button, Paragraph, FAB } from 'react-native-paper';
+import globalStyles, { appbarTheme } from '../../styles';
+import { Card, Headline, Subheading, Title, Button, Paragraph, FAB, Appbar } from 'react-native-paper';
 import { SECONDARY_COLOR, WHITE } from '../../constants';
 
   import {
@@ -15,12 +15,17 @@ import { SECONDARY_COLOR, WHITE } from '../../constants';
 import Header from '../../components/Header';
 import NewLoanApplication from '../../modal/NewLoanApplication';
 
-export default function Borrow() : ReactNode {
+export default function Borrow({ navigation }) : ReactNode {
     const [newLoanApplicationIsVisible, setNewLoanApplicationIsVisible] = useState(false);
 
     return (
         <>
-                <Header title='Borrow' />
+                <Appbar.Header theme={appbarTheme}>
+                <Appbar.Action icon='menu' onPress={() => navigation.openDrawer()} />
+                <Title>
+                    Borrow
+                </Title>
+  </Appbar.Header>
         <View style={globalStyles.fullScreen}>
 
         <Tabs
@@ -44,7 +49,7 @@ export default function Borrow() : ReactNode {
       </Tabs>
       <FAB
     style={styles.fab}
-    label='New Loan'
+    label='New Application'
     icon="plus"
     onPress={() => setNewLoanApplicationIsVisible(true)}
   />
