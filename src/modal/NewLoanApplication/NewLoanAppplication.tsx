@@ -16,11 +16,17 @@ interface INewLoanApplicationProps {
 }
 
 const data = [{
-    value: 'Banana',
+    value: '$10,000 - $30,000',
   }, {
-    value: 'Mango',
+    value: '$30,000 - $60,000',
   }, {
-    value: 'Pear',
+    value: '$60,000 - $90,000',
+  },{
+    value: '$90,000 - $120,000',
+  },{
+    value: '$120,000 - $150,000',
+  },{
+    value: '$150,000+',
   }];
 
 
@@ -52,7 +58,7 @@ export default function NewLoanApplication({ isVisible, onClose, onRequestClose 
 
     
     return (
-        <Modal visible={false} animationType='slide' animated onClose={onClose} onRequestClose={onRequestClose}>
+        <Modal visible={isVisible} animationType='slide' animated onClose={onClose} onRequestClose={onRequestClose}>
             <SafeAreaView style={[globalStyles.fullScreen, globalStyles.paddedView, { backgroundColor: WHITE }]}>
             <ScrollView contentContainerStyle={globalStyles.paddedView}>
                 <View style={{marginVertical: 20}}>

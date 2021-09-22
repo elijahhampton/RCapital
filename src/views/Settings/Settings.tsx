@@ -5,7 +5,7 @@ import styles, { appbarTheme, listItemTheme } from './styles';
 import globalStyles from '../../styles';
 import { PRIMARY_COLOR, SECONDARY_COLOR, WHITE } from '../../constants';
 
-const generateWalletSettings = (address : string) => {
+const generateWalletSettings = (address : string, navigation: any) => {
     const WALLET_SETTINGS = [
         {
             title: 'Wallet',
@@ -15,7 +15,7 @@ const generateWalletSettings = (address : string) => {
         {
             title: 'Check Recovery Key',
             description: '',
-            onPress: () => {}
+            onPress: () => navigation.navigate('CheckRecoveryKey')
         },
         {
             title: 'Reset Password',
@@ -31,6 +31,7 @@ const generateWalletSettings = (address : string) => {
         titleStyle={styles.titleStyle}
         descriptionStyle={styles.descriptionStyle}
         theme={listItemTheme}
+        onPress={settings.onPress}
         right={props => <List.Icon {...props} icon='chevron-right' color={WHITE} />}
       />
       )
@@ -49,7 +50,7 @@ export default function Settings({ navigation }) {
   <View style={styles.root}>
             <List.Section style={styles.section}>
             <List.Subheader>Wallet</List.Subheader>
-            {generateWalletSettings(address)}
+            {generateWalletSettings(address, navigation)}
             </List.Section>
            
 

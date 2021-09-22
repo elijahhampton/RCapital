@@ -6,11 +6,15 @@ import { Appbar, Caption, Title } from 'react-native-paper';
 
 const NUM_KEY_PHRASES = [0,1,2,3,4,5,6,7,8,9,10,11]
 
-export default function CheckRecoveryKey() {
+interface ICheckRecoveryKeyProps {
+    navigation: any
+}
+
+export default function CheckRecoveryKey({ navigation } : ICheckRecoveryKeyProps) {
     return (
         <View style={globalStyles.fullScreen}>
             <Appbar.Header theme={appbarTheme}>
-                <Appbar.BackAction />
+                <Appbar.BackAction onPress={() => navigation.goBack()} />
                 <Title>
                     Check Recovery Key
                 </Title>

@@ -9,6 +9,7 @@ import Invest from '../views/Invest';
 import Settings from '../views/Settings';
 import BorrowStack from './BorrowStackNavigation';
 import PortfolioStack from './PortfolioStackNavigation';
+import SettingsStack from './SettingsStackNavigation';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +32,7 @@ export default function DrawerNavigator() {
         <Drawer.Screen name='Portfolio' component={Invest} />
         <Drawer.Screen name='Invest' component={PortfolioStack} />
         <Drawer.Screen name='Borrow' component={BorrowStack} />
-        <Drawer.Screen name='Settings' component={Settings} />
+        <Drawer.Screen name='Settings' component={SettingsStack} />
     </Drawer.Navigator>
     )
 }

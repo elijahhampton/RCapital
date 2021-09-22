@@ -7,7 +7,11 @@ const SettingsStackNavigator = createStackNavigator();
 
 export default function SettingsStack() {
   return (
-    <SettingsStackNavigator.Navigator initialRouteName='Settings'>
+    <SettingsStackNavigator.Navigator 
+    initialRouteName='Settings'
+    screenOptions={{
+      headerShown: false
+    }}>
       <SettingsStackNavigator.Screen name='Settings' component={Settings} />
       <SettingsStackNavigator.Screen name='CheckRecoveryKey' component={CheckRecoveryKey} />
     </SettingsStackNavigator.Navigator>
